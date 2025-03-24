@@ -2,7 +2,7 @@
   "name": "dto",
   "version": "0.0.0",
   "private": true,
-  "homepage": "https://maplephp.github.io/DTO-docs",
+  "homepage": "https://maplephp.github.io/DTO",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
