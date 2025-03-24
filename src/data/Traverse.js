@@ -207,9 +207,8 @@ $data = Traverse::value([
     "roles" => ["admin", "editor"]
 ]);
 
-$json = $data->toJson($data->toArray());
+echo $data->toJson();
 
-echo $json;
 `,
         result: `
 {"name":"Alice","email":"alice@example.com","roles":["admin","editor"]}
