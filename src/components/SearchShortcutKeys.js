@@ -1,17 +1,17 @@
-import react, { useMemo } from 'react';
-import React from "react";
-
+import React, { useEffect, useState } from 'react';
 
 export default function SearchShortcutKeys(props) {
+  const [isMac, setIsMac] = useState(false);
 
-  const isMac = useMemo(() => {
-    if (navigator.userAgentData) {
-      return navigator.userAgentData.platform === 'macOS';
-    }
-    return navigator.userAgent.includes('Mac');
-  });
+  useEffect(() => {
+    const isMacPlatform = navigator.userAgentData
+      ? navigator.userAgentData.platform === 'macOS'
+      : navigator.userAgent.includes('Mac');
+
+    setIsMac(isMacPlatform);
+  }, []);
 
   return (
-    <span {...props}>{isMac ? "⌘+G" : "Ctrl+G"}</span>
-    )
+    <span {...props}>{isMac ? '⌘+G' : 'Ctrl+G'}</span>
+  );
 }
