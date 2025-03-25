@@ -12,10 +12,8 @@ $users = Traverse::value([
 ]);
 
 foreach($users->fetch() as $user) {
-    echo $user->name->strStripTags()->strUcFirst()->get();
+    echo $user->name->strStripTags()->strUcFirst();
 }
-
-print_r($transformed);
 
 `,
         result: `
@@ -119,16 +117,18 @@ User: John
         args: "It takes an optional $fallback argument, which will be returned if the stored value is null.",
         code: `
 $user = Traverse::value([
-    "firstname" => "John",
-    "lastname" => "Doe"
+    "organization" => "MaplePHP",
+    "orgNr" => 198207123,
 ]);
 
-echo "User: " . $user->eq("firstname")->get();
+echo "Number (int): " . $user->eq("orgNr")->get();
+
+echo "Number (string): " . $user->eq("orgNr");
 
 `,
         result: `
-User: John
-
+Number (int): 198207123
+Number (string): 198207123
 `
     },
     {
@@ -346,6 +346,7 @@ $obj = Traverse::value([
 ]);
 
 $totalSalary = $obj->employees->reduce(function ($carry, $employee) {
+    // Get method is used to retrieve the value in right data type
     return $carry + $employee->salary->get();
 }, 0);
 
