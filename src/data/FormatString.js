@@ -26,6 +26,19 @@ echo $user->email->strPositionLast('.');
 `
   },
   {
+    title: "substr",
+    content: "The substr method extracts a portion of a string starting from a given position. It supports multibyte functionality, ensuring proper handling of UTF-8 and other encodings. If your environment does not support multibyte string functions, it provides a polyfill.",
+    args: "Takes a starting position $start, an optional $length to define how many characters to extract, and an optional $encoding to specify the character encoding.",
+    code: `
+$user = Traverse::value(["email" => "john.doe@gmail.com"]);
+
+echo $user->email->strSubstr(0, 4);  
+
+// Result: john
+
+`
+  },
+  {
     title: "strlen",
     content: "The strlen method returns the length of a string. It supports multibyte functionality, ensuring proper handling of UTF-8 and other encodings. If your environment does not support multibyte string functions, it provides a polyfill.",
     args: "Takes an optional $encoding to specify the character encoding.",

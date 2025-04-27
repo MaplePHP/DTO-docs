@@ -104,6 +104,7 @@ $user = Traverse::value([
 ]);
 
 echo "User: " . $user->eq("firstname");
+// echo "User: " . $user->eq("firstname")->toString(); // This is the same as above
 
 `,
         result: `
