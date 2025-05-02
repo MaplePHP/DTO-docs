@@ -216,6 +216,23 @@ echo $data->toJson();
 `
     },
     {
+      title: "acceptType",
+      priority: 1,
+      content: "The acceptType method validates that the raw value matches one of the allowed data types. If the value matches, it is returned; otherwise, an exception is thrown.",
+      args: "Takes an array $validDataType with accepted type strings such as \"string\", \"array\", \"object\", \"int\", \"bool\", \"null\", etc.",
+      code: `
+$user = Traverse::value(["meta" => ["age" => 30]]);
+
+$data = $user->meta->acceptType(["array"]);
+
+print_r($data);
+
+`,
+      result: `
+ ['age' => 30]
+`
+    },
+    {
         title: "dump",
         priority: 1,
         content: "The dump method outputs the current collection in a human-readable format. This is useful for debugging and inspecting data during development.",
