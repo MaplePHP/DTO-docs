@@ -1357,26 +1357,20 @@ Total: $1129.97
 `
     },
     {
-        title: "valid",
+        title: "validator",
         priority: 1,
-        content: "The valid method checks whether the current value meets a specific validation rule. If the value is valid, it returns true; otherwise, it returns false. This is useful for ensuring data integrity before processing or transformation.",
-        args: "The first argument is `$method`, which is the name of the validation rule from the MaplePHP Validate library. The second argument, `$args`, is an optional array of parameters passed to the validation method.",
+        content: "The validator method creates a validation instance for the current value, allowing you to chain validation methods like isEmail, isUrl, or custom rules.",
+        args: "",
         code: `
-$obj = Traverse::value([
-    "firstname" => "Alice",
-    "lastname" => "Johnson",
-    "age" => "1950-11-02"
-]);
+$user = Traverse::value(["email" => "john.doe@gmail.com"]);
 
-if ($obj->age->valid("age", [18])) {
-    echo "Valid age";
-} else {
-    echo "Age out of range";
-}
+$isValid = $user->email->validator()->isEmail();
+//$isValid = $user->email->expect()->isEmail(); // expect is a alias that is also supported  
 
+var_dump($isValid);
 `,
         result: `
-Valid age
+Result: true
 `
     },
     {
